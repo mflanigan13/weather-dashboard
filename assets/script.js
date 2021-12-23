@@ -1,3 +1,4 @@
+// global variables for DOM
 var cityFormEl = document.querySelector("#city-search-form");
 var cityInputEl = document.querySelector("#city");
 var weatherContainerEl = document.querySelector("#current-weather-container");
@@ -96,7 +97,7 @@ var getUvIndex = function(lat,lon){
 
         });
     });
-}
+};
 
 // display the UV index for current weather
 var displayUvIndex = function(index){
@@ -119,8 +120,7 @@ var displayUvIndex = function(index){
     // append to elements
     uvIndexEl.appendChild(uvIndexValue);
     weatherContainerEl.appendChild(uvIndexEl);
-}
-
+};
 
 // five day weather section
 var get5Day = function (city) {
@@ -161,35 +161,27 @@ var display5Day = function (weather) {
             "src",
             `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}@2x.png`
         );
-
-        //append to forecast card
         forecastEl.appendChild(weatherIcon);
 
         //create temperature span
         var forecastTempEl = document.createElement("span");
         forecastTempEl.classList = "card-body text-center";
         forecastTempEl.textContent = "Temperature: " + dailyForecast.main.temp + " °F";
-
-        //append to forecast card
         forecastEl.appendChild(forecastTempEl);
         
         // create wind span
         var forecastWindEl = document.createElement("span");
         forecastWindEl.classList = "card-body text-center";
         forecastWindEl.textContent = "Wind: " + dailyForecast.wind.speed + " MPH";
-        console.log(dailyForecast);
-
-        //append to forecast card
         forecastEl.appendChild(forecastWindEl);
-
+        
+        // create humidity span
         var forecastHumEl = document.createElement("span");
         forecastHumEl.classList = "card-body text-center";
         forecastHumEl.textContent = "Humidity: " + dailyForecast.main.humidity + "  %";
 
         //append to forecast card
         forecastEl.appendChild(forecastHumEl);
-
-        //append to five day container
         forecastContainerEl.appendChild(forecastEl);
     }
 };
